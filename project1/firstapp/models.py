@@ -9,7 +9,7 @@ class Topic(models.Model):
 
 class Webpage(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    name = models.CharField(max_lenght=256, unique=True)
+    name = models.CharField(max_length=256, unique=True)
     url = models.URLField(unique=True)
 
     def __str__(self):
