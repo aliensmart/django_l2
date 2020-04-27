@@ -12,4 +12,14 @@ def index(request):
 
 def form_name_view(request):
     form = theform.FormName
+
+    if request.method == 'POST':
+        
+        form = theform.FormName(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            text = form.cleaned_data['text']
+
     return render(request, 'firstapp/form.html', {'form':form})
