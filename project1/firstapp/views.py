@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from firstapp.models import Topic, AccessRecord, Webpage
+from firstapp import theform
+
 # Create your views here.
 def index(request):
     webpage_list = AccessRecord.objects.order_by('date')
@@ -7,3 +9,7 @@ def index(request):
         'access_records': webpage_list
     }
     return render(request, 'firstapp/index.html', context=date_dict)
+
+def form_name_view(request):
+    form = theform.FormName
+    return render(request, 'firstapp/form.html', {'form':form})
